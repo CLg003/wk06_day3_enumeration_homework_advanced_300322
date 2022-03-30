@@ -21,7 +21,7 @@ AnagramFinder.prototype.findAnagrams = function(otherWords) {
     const anagramWords = [];
     for (let possibleAnagramWord of possibleAnagrams) {
         possibleAnagramLetters = possibleAnagramWord.split('');
-        if (possibleAnagramLetters.every(letter => wordLow.includes(letter))) {
+        if (possibleAnagramLetters.every(letter => wordLow.includes(letter.toLowerCase()))) {
             anagramWords.push(possibleAnagramWord);
         }
     }

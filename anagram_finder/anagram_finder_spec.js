@@ -32,7 +32,7 @@ describe('AnagramFinder', function () {
     assert.deepStrictEqual(anagramFinder.findAnagrams(['good']), []);
   });
 
-  xit('should detect an anagram regardless of case', function () {
+  it('should detect an anagram regardless of case', function () {
     const anagramFinder = new AnagramFinder('DeduCTionS');
     assert.deepStrictEqual(anagramFinder.findAnagrams(['DiscOUnteD']), ['DiscOUnteD']);
   });
