@@ -2,11 +2,13 @@ const assert = require('assert');
 const AnagramFinder = require('./anagram_finder.js');
 
 describe('AnagramFinder', function () {
+  // ADDED TEST (WORD LENGTH)
   it('should be able to eliminate words of a different length', function() {
     const anagramFinder = new AnagramFinder('act');
     assert.deepStrictEqual(anagramFinder.compareLength(['cat', 'dog']), ['cat', 'dog']);
   })
 
+  // ADDED TEST (WORDS NOT THE SAME)
   it('should be able to check words are not the same', function() {
     const anagramFinder = new AnagramFinder('act');
     assert.deepStrictEqual(anagramFinder.wordsNotSame(['act', 'cat']), ['cat']);

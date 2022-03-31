@@ -12,24 +12,39 @@ AnagramFinder.prototype.compareLength = function(otherWords) {
 
 // Check if any of the possible anagrams are actually the same as the word
 AnagramFinder.prototype.wordsNotSame = function(otherWords) {
-    const equalLengthWords = this.compareLength(otherWords);
-    const uniqueWords = equalLengthWords.filter(equalWord => equalWord.toLowerCase() != this.word.toLowerCase());
+    const uniqueWords = otherWords.filter(equalWord => equalWord.toLowerCase() != this.word.toLowerCase());
     return uniqueWords;
 }
 
 // Call word length and same word functions and then check all letters of each possible anagram against the letters in the word
+// ORIGINAL SUBMITTED AS HW WEDNESDAY EVE:
+// AnagramFinder.prototype.findAnagrams = function(otherWords) {
+//     const equalLengthWords = this.compareLength(otherWords);
+//     const possibleAnagrams = this.wordsNotSame(equalLengthWords);
+//     const wordLow = this.word.toLowerCase();
+//     const anagramWords = [];
+//     for (let possibleAnagramWord of possibleAnagrams) {
+//         possibleAnagramLetters = possibleAnagramWord.split('');
+//         if (possibleAnagramLetters.every(letter => wordLow.includes(letter.toLowerCase()))) {
+//             anagramWords.push(possibleAnagramWord);
+//         }
+//     }
+//     return anagramWords;
+// }
+
+// REFACTORING THURSDAY AM:
 AnagramFinder.prototype.findAnagrams = function(otherWords) {
-    const possibleAnagrams = this.wordsNotSame(otherWords);
+    const equalLengthWords = this.compareLength(otherWords);
+    const possibleAnagrams = this.wordsNotSame(equalLengthWords);
     const wordLow = this.word.toLowerCase();
     const anagramWords = [];
-    for (let possibleAnagramWord of possibleAnagrams) {
+    possibleAnagrams.forEach(possibleAnagramWord => {
         possibleAnagramLetters = possibleAnagramWord.split('');
         if (possibleAnagramLetters.every(letter => wordLow.includes(letter.toLowerCase()))) {
             anagramWords.push(possibleAnagramWord);
         }
-    }
+    });
     return anagramWords;
-    
 }
 
 module.exports = AnagramFinder;
